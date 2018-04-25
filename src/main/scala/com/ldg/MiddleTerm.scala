@@ -37,7 +37,7 @@ object MiddleTerm {
 
     // 3. kopo_channel_seasonality_new의 qty값을 spark sql을 활용하여 1.2배 증가시킨 후 qty_new컬러을 생성하는 코드작성
 
-    var middleResult=spark.sql("selectregionid,product,yearweek,qty*1.2asqty_new from selloutTable");
+    var middleResult=spark.sql("selectregionid,product,yearweek,qty*1.2as qty_new from selloutTable");
 
 
     // 4. 아래와 같이 getWeekInfo("201612") 호출 시 12라는 값이 INT가 리턴되도록 함수생성하시오
@@ -206,10 +206,23 @@ object MiddleTerm {
 
     // data save
 
+//      [postgres]
+//    jdbc:postgresql://127.0.0.1:5432/postgres
+//    org.postgresql.Driver
+//      [mysql]
+//    - jdbc:mysql://127.0.0.1:3306/kopo
+//    com.mysql.jdbc.Driver
+//      [mssql]
+//    - jdbc:sqlserver://127.0.0.1:1433;DatabaseName=kopo
+//    - com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+
     // 데이터베이스 주소 및 접속정보 설정
 
     var myUrl = "jdbc:oracle:thin:@127.0.0.1:1521/XE"
 
+    var outputUser = "HAITEAM"
+    var outputPw = "haiteam"
 
 
     // 데이터 저장
